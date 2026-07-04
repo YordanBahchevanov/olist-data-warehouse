@@ -1,0 +1,10 @@
+Table,Column,Issue,Rows Affected
+customers,customer_city,Missing Values,2983
+customers,customer_city,Extra Spaces,4972
+customers,customer_city,Uppercase,4972
+customers,Entire Row,Duplicated Rows,994
+products,product_category_name,Missing Values,988
+products,product_category_name,Extra Spaces,1647
+products,product_category_name,Uppercase,1647
+payments,payment_value,Negative Values,207
+payments,Entire Row,Duplicated Rows,1038
