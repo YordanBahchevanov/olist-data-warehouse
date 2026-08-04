@@ -104,6 +104,7 @@ olist-data-warehouse/
 │
 ├── .env.example
 ├── .gitignore
+├── architecture.drawio
 ├── docker-compose.yml
 ├── README.md
 └── requirements.txt
