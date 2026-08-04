@@ -71,6 +71,88 @@ save(customers, "messy_olist_customers_dataset.csv")
 print("Customers ✓")
 
 # -----------------------------
+# Items
+# -----------------------------
+
+print("Processing items...")
+
+items = pd.read_csv(ORIGINAL_DATA / "olist_order_items_dataset.csv")
+
+make_missing(
+    items, 
+    "shipping_limit_date", 
+    MISSING_RATE,
+    logger,
+    "items"
+)
+
+negative_values(
+    items,
+    "price",
+    NEGATIVE_VALUE_RATE,
+    logger,
+    "items"
+)
+
+negative_values(
+    items,
+    "freight_value",
+    NEGATIVE_VALUE_RATE,
+    logger,
+    "items"
+)
+
+save(items, "messy_olist_order_items_dataset.csv")
+
+print("Items ✓")
+
+# -----------------------------
+# Payments
+# -----------------------------
+
+print("Processing payments...")
+
+payments = pd.read_csv(ORIGINAL_DATA / "olist_order_payments_dataset.csv")
+
+negative_values(
+    payments,
+    "payment_value",
+    NEGATIVE_VALUE_RATE,
+    logger,
+    "payments"
+)
+
+payments = duplicate_rows(
+    payments, 
+    DUPLICATE_RATE,
+    logger,
+    "payments" 
+)
+
+save(payments, "messy_olist_order_payments_dataset.csv")
+
+print("Payments ✓")
+
+# -----------------------------
+# Orders
+# -----------------------------
+
+print("Processing orders...")
+
+orders = pd.read_csv(ORIGINAL_DATA / "olist_orders_dataset.csv")
+
+corrupt_dates(
+    orders,
+    CORRUPTED_DATE_RATE,
+    logger,
+    "orders"
+)
+
+save(orders, "messy_olist_orders_dataset.csv")
+
+print("Orders ✓")
+
+# -----------------------------
 # Products
 # -----------------------------
 
@@ -113,33 +195,6 @@ uppercase(
 save(products, "messy_olist_products_dataset.csv")
 
 print("Products ✓")
-
-# -----------------------------
-# Payments
-# -----------------------------
-
-print("Processing payments...")
-
-payments = pd.read_csv(ORIGINAL_DATA / "olist_order_payments_dataset.csv")
-
-negative_values(
-    payments,
-    "payment_value",
-    NEGATIVE_VALUE_RATE,
-    logger,
-    "payments"
-)
-
-payments = duplicate_rows(
-    payments, 
-    DUPLICATE_RATE,
-    logger,
-    "payments" 
-)
-
-save(payments, "messy_olist_order_payments_dataset.csv")
-
-print("Payments ✓")
 
 # -----------------------------
 # Save Report

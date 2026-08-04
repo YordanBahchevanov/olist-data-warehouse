@@ -3,8 +3,16 @@ customers,customer_city,Missing Values,2983
 customers,customer_city,Extra Spaces,4972
 customers,customer_city,Uppercase,4972
 customers,Entire Row,Duplicated Rows,994
+items,shipping_limit_date,Missing Values,3379
+items,price,Negative Values,225
+items,freight_value,Negative Values,225
+payments,payment_value,Negative Values,207
+payments,Entire Row,Duplicated Rows,1038
+orders,Date Columns,Future Purchase Date,978
+orders,Date Columns,Approved Before Purchase,978
+orders,Date Columns,Delivered Before Shipped,976
+orders,Date Columns,Missing Delivery Date,1010
+orders,Date Columns,Extreme Delivery Delay,1009
 products,product_category_name,Missing Values,988
 products,product_category_name,Extra Spaces,1647
 products,product_category_name,Uppercase,1647
-payments,payment_value,Negative Values,207
-payments,Entire Row,Duplicated Rows,1038

@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import pandas as pd
 
@@ -104,3 +105,128 @@ def negative_values(df, column, percent, logger, table):
         len(rows)
     )
 
+
+def corrupt_dates(df, percent, logger, table):
+    """
+    Introduce realistic date quality issues into orders dataset.
+    """
+
+    date_columns = [
+        "order_purchase_timestamp",
+        "order_approved_at",
+        "order_delivered_carrier_date",
+        "order_delivered_customer_date",
+        "order_estimated_delivery_date",
+    ]
+
+    missing = [c for c in date_columns if c not in df.columns]
+
+    if missing:
+        print(f"[WARNING] {table}: missing date columns: {missing}")
+        return
+    
+    rows = random_rows(df, percent)
+
+    issue_counter = {
+        "Future Purchase Date": 0,
+        "Approved Before Purchase": 0,
+        "Delivered Before Shipped": 0,
+        "Missing Delivery Date": 0,
+        "Extreme Delivery Delay": 0,
+    }
+
+    for row in rows:
+
+        issue = random.choice([
+            "future",
+            "approved_before_purchase",
+            "delivered_before_shipped",
+            "missing_delivery",
+            "long_delivery",
+        ])
+
+        purchase = pd.to_datetime(
+            df.at[row, "order_approved_at"],
+            errors="coerce"
+        )
+
+        approved = pd.to_datetime(
+            df.at[row, "order_approved_at"],
+            errors="coerce"
+        )
+
+        shipped = pd.to_datetime(
+            df.at[row, "order_delivered_carrier_date"],
+            errors="coerce"
+        )
+
+        delivered = pd.to_datetime(
+            df.at[row, "order_delivered_customer_date"],
+            errors="coerce"
+        )
+
+        if pd.isna(purchase):
+            continue
+        
+        # ------------------------------------------------
+
+        if issue == "future":
+
+            df.at[row, "order_purchase_timestamp"] = (
+                purchase + pd.Timedelta(days=3650)
+            )
+
+            issue_counter["Future Purchase Date"] += 1
+        
+        # ------------------------------------------------
+        
+        elif issue == "approved_before_purchase":
+
+            if pd.notna(approved):
+
+                df.at[row, "order_approved_at"] = (
+                    purchase - pd.Timedelta(days=2)
+                )
+
+                issue_counter["Approved Before Purchase"] += 1
+        
+        # ------------------------------------------------
+        
+        elif issue == "delivered_before_shipped":
+
+            if pd.notna(shipped):
+
+                df.at[row, "order_delivered_carrier_date"] = (
+                    shipped - pd.Timedelta(days=2)
+                )
+
+                issue_counter["Delivered Before Shipped"] += 1
+        
+        # ------------------------------------------------
+        
+        elif issue == "missing_delivery":
+
+            df.at[row, "order_delivered_customer_date"] = pd.NaT
+
+            issue_counter["Missing Delivery Date"] += 1
+ 
+        # ------------------------------------------------
+        
+        elif issue == "long_delivery":
+
+            df.at[row, "order_delivered_customer_date"] = (
+                purchase - pd.Timedelta(days=500)
+            )
+
+            issue_counter["Extreme Delivery Delay"] += 1
+    
+    for issue, count in issue_counter.items():
+
+        if count > 0:
+
+            logger.log(
+                table,
+                "Date Columns",
+                issue,
+                count
+            )

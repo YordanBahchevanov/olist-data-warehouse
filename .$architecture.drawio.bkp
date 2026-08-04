@@ -1,0 +1,34 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="pDc3sbxliJYch9Ossz0p">
+    <mxGraphModel dx="2416" dy="1422" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IOAzitWjzGbasMk38v2n-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#808080;" value="" vertex="1">
+          <mxGeometry height="320" width="120" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="&lt;font face=&quot;Satoshi&quot; style=&quot;font-size: 18px;&quot;&gt;Sources&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="50" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#808080;" value="" vertex="1">
+          <mxGeometry height="320" width="360" x="240" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="&lt;font face=&quot;Satoshi&quot; style=&quot;font-size: 18px;&quot;&gt;Data Warehouse&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="345" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#808080;" value="" vertex="1">
+          <mxGeometry height="320" width="120" x="680" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="&lt;font face=&quot;Satoshi&quot; style=&quot;font-size: 18px;&quot;&gt;Consume&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="690" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1;" value="Bronze Layer" vertex="1">
+          <mxGeometry height="30" width="80" x="280" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="IOAzitWjzGbasMk38v2n-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d79b00;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="240" width="80" x="280" y="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
